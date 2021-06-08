@@ -30,7 +30,7 @@
     	
     </div>	
     <!-- 로그인 폼 모달 -->
-<div class="modal" id="loginfrm" tabindex="-1">
+<div class="modal" id="loginmodal" tabindex="-1">
   <div class="modal-dialog">
      <div class="modal-content">
         <div class="modal-header">
@@ -72,6 +72,6 @@
     <!-- fontawesome src -->
     <script src="https://kit.fontawesome.com/d248479533.js" crossorigin="anonymous"></script>
 
-	
+	<script src="/js/join.js" ></script>
   </body>
 </html>
