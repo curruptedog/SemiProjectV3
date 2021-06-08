@@ -14,7 +14,7 @@
         <li class="breadcrumb-item ">
             <button type="button" disabled class="btn btn-success">가입인증</button></li>
         <li class="breadcrumb-item active">
-            <button type="button" disabled class="btn btn-secondary">회원정보입력</button></li>
+            <button type="button" disabled class="btn btn-success">회원정보입력</button></li>
         <li class="breadcrumb-item">
             <button type="button" disabled class="btn btn-secondary">가입완료</button></li>
     </ol>
@@ -33,7 +33,7 @@
         <div class="form-group row">
             <div class="col-5 offset-1">
                 <div class="form-group row">
-                    <label class="col-4 col-form-label text-warning text-right" for="name">이름</label>
+                    <label class="col-3 col-form-label text-warning text-right" for="name">이름</label>
                     <input type="text" class="col-8 form-control border-warning" name="name" id="name">
                 </div>
                 <div class="form-group row">
@@ -63,10 +63,10 @@
                     </select>
                 </div>
                 <div class="form-group row">
-                    <label class="col-4 text-warning text-right" for="gender">성별</label>
+                    <label class="col-4 text-warning text-right" >성별</label>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="gmale" name="gender" value="m" class="custom-control-input">
-                        <label for="gmale1" class="custom-control-label text-warning">남자</label>
+                        <label for="gmale" class="custom-control-label text-warning">남자</label>
                     </div>&nbsp;&nbsp;&nbsp;
                     <div class="custom-control custom-radio">
                         <input type="radio" id="gfmale" name="gender" value="f" class="custom-control-input">
@@ -89,7 +89,7 @@
        <div class="col text-center">
            <hr>
            <button type="button" id="chk1btn" class="btn btn-primary"><i class="bi bi-check-lg"></i> &nbsp;확인하기</button>
-           <button type="button" id="chk1btn" class="btn btn-danger"><i class="bi bi-x-lg"></i> &nbsp;취소하기</button>
+           <button type="button" id="cance1btn" class="btn btn-danger"><i class="bi bi-x-lg"></i> &nbsp;취소하기</button>
        </div></div> <!-- 버튼들 -->
     </form>
 </div> <!-- 회원 정보 -->
@@ -102,13 +102,13 @@
         <div class="row">
             <div class="col-5 offset-1">
                 <div class="form-group row">
-                    <label class="col-4 col-form-label text-warning text-right" for="name1">이름</label>
-                    <input type="text" class="col-8 form-control border-warning" name="name1" id="name">
+                    <label class="col-4 col-form-label text-warning text-right" for="name2">이름</label>
+                    <input type="text" class="col-8 form-control border-warning" name="name" id="name2">
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-form-label text-warning text-right" for="jumin1">주민번호</label>
-                    <input type="text" id="jumin1" class="col-3 form-control border-warning"><span class="col-form-label">&nbsp;&mdash;&nbsp;</span>
-                    <input type="text" id="jumin2" class="col-3 form-control border-warning">
+                    <input type="text" name="jumin1" id="jumin1" class="col-3 form-control border-warning"><span class="col-form-label">&nbsp;&mdash;&nbsp;</span>
+                    <input type="text" name="jumin2" id="jumin2" class="col-3 form-control border-warning">
                     &nbsp;
 
                 </div>
@@ -135,8 +135,8 @@
        <div class="row">
        <div class="col text-center">
            <hr>
-           <button type="button" id="chk1btn" class="btn btn-primary"><i class="bi bi-check-lg"></i> &nbsp;확인하기</button>
-           <button type="button" id="chk1btn" class="btn btn-danger"><i class="bi bi-x-lg"></i> &nbsp;취소하기</button>
+           <button type="button" id="chk2btn" class="btn btn-primary"><i class="bi bi-check-lg"></i> &nbsp;확인하기</button>
+           <button type="button" id="cance2btn" class="btn btn-danger"><i class="bi bi-x-lg"></i> &nbsp;취소하기</button>
        </div></div> <!-- 버튼들 -->
     </form>
 </div> <!-- 회원 정보 -->

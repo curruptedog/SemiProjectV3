@@ -393,8 +393,8 @@
 
 <script>
          $('#okagree').click(function() {
-             if (!$('#agree1').is(':cheked') ||
-                 $('#agree2').is(':checked') == false) alert('동의하세요.');
+             if (!$('#agree1').is(':cheked') || $('#agree2').is(':checked') == false)
+                 alert('동의하세요.');
              else location.href='/join/checkme';
          });
          $('#noagree').click(function() {location.href='/';});
