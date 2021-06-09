@@ -177,3 +177,31 @@ $('#email3').on('change', function () {
        $('#email2').val(val);
    }
 });
+
+// loginbtn (로그인 모달 버튼)  joinme 했던거랑 똑같대
+$('#loginbtn').on('click', function () {
+   if ($('#userid').val == '') alert('아이디를 입력하세요');
+   else if ($('#passwd').val == '') alert('비밀번호를 입력하세요.');
+   else {
+       const frm = $('#loginfrm');
+       frm.attr('method', 'post');
+       frm.attr('action', '/join/login');
+       frm.submit();
+   }
+});
+
+// close login modal (로그인 모달 창 닫기 버튼)
+$('#lgmbtn').on('click', function () {
+    $('#loginmodal').modal('hide');
+});
+
+// logoutbtn (로그아웃)
+$('#logoutbtn').on('click', function () {
+   location.href='/join/logout';
+});
+
+// 메인으로 이동 버튼
+$('#go2index').on('click', function () {
+    location.href='/';
+})
+

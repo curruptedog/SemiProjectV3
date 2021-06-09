@@ -26,6 +26,7 @@
     <!-- 로그인 확인 -->
     <select id="checkLogin" statementType="PREPARED" parameterType="jasontodd.spring.mvc.vo.Member" resultType="int" >
         select count(userid) cnt from joinMember where userid = #{userid} and passwd = #{passwd}
+        <!-- cnt 값이 1이면  -->
     </select>
 
 </mapper>

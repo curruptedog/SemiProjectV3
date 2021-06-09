@@ -35,11 +35,12 @@
      <div class="modal-content">
         <div class="modal-header">
            <h3 class="modal-title">로그인</h3>
-           <button type="button" class="btn btn-secondary close" data-dismiss="modal" aria-label="Close">
+           <button type="button" class="btn btn-secondary close" data-dismiss="modal" aria-label="Close" id="lgmbtn">
               닫기
             </button>
         </div>
         <div class="modal-body">
+            <form name="loginfrm" id="loginfrm" method="post">
            <div class="form-group row text-danger">
               <div class="col-2"></div>
               <label for="userid" class="col-form-label col-3 ">아이디</label>
@@ -55,10 +56,10 @@
            <div class="form-check">
               <input class="form-check-input" type="checkbox" name="uzi" id="uzi" value="1">
               <label class="form-check-label text-warning">로그인 상태 유지</label>
-           </div></div>
+           </div></div> </form>
          </div>
          <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">로그인</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" id="loginbtn">로그인</button>
             <button type="button" class="btn btn-warning">아이디/비밀번호 찾기</button>
          </div>
      </div>
