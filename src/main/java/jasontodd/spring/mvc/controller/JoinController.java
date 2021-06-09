@@ -46,6 +46,9 @@ public class JoinController {
     // 서블릿에서 제공하는 HttpsServletResponse를 이용하면
     // 스프링의 뷰리졸버 없이 바로 응답 출력 가능
     // 결과는 자바스크립트의 ajax를 이용해서 적절히 가동해 폼에 출력
+
+    // http://localhost:8080/join/zipcode?dong=xxx -> xxx에 검색한 동네 이름
+
     @ResponseBody
     @GetMapping("/join/zipcode")
     public void zipcode(String dong, HttpServletResponse res) {
@@ -55,6 +58,21 @@ public class JoinController {
             res.setContentType("application/json; charset=UTF-8");
             // 응답 결과를 뷰 없이 브라우져로 바로 출력
             res.getWriter().print( msrv.findZipcode(dong) );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 아이이 중복검사
+    // /join/checkuid?uid=아이디       http://localhost:8080/join/checkuid?uid=bake 결과 1
+    // 사용가능 아이디 : 결과 0
+    // 사용불가능 아이디 : 결과 1
+
+    @ResponseBody
+    @GetMapping("/join/checkuid")
+    public void checkuid(String uid, HttpServletResponse res) {
+        try {
+            res.getWriter().println( msrv.checkUserid(uid) );
         } catch (IOException e) {
             e.printStackTrace();
         }

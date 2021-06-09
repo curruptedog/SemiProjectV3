@@ -53,19 +53,19 @@
         <div class="form-group row align-items-center">
                 <label class="col-3 col-form-label text-danger text-right" for="userid">아이디</label>
                 <input type="text" class="col-3 form-control border-danger" name="userid" id="userid">
-                <span class="text-muted">&nbsp;&nbsp;6~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다.</span>
+                <span id="uidmsg" class="text-muted col-form-label">&nbsp;&nbsp;6~16 자의 영문 소문자, 숫자와 특수기호(_) 만 사용할 수 있습니다.</span>
         </div> <!-- 아이디 -->
 
         <div class="form-group row align-items-center">
                 <label class="col-3 col-form-label text-danger text-right" for="passwd">비밀번호</label>
                 <input type="password" class="col-3 form-control border-danger" name="passwd" id="passwd">
-                <small class="text-muted">&nbsp;&nbsp;6~16 자의 영문 소문자, 숫자와 특수문자 사용할 수 있습니다.</small>
+                <span id="pwdmsg" class="text-muted">&nbsp;&nbsp;6~16 자의 영문 소문자, 숫자와 특수문자 사용할 수 있습니다.</span>
         </div> <!-- 비번 -->
 
         <div class="form-group row align-items-center">
                 <label class="col-3 col-form-label text-danger text-right" for="chkpswd">비밀번호 확인</label>
                 <input type="password" class="col-3 form-control border-danger" name="pswd" id="chkpswd">
-                <small class="text-muted">&nbsp;&nbsp;이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요.</small>
+                <span id="chkpdwmsg" class="text-muted">&nbsp;&nbsp;이전 항목에서 입력했던 비밀번호를 한번 더 입력하세요.</span>
         </div> <!-- 비번 확인 -->
 
         <div class="form-group row">
@@ -154,7 +154,7 @@
                         &nbsp;&nbsp;
                         <input type="text" class="col-4 form-control border-primary" name="dong" id="dong">
                         &nbsp;
-                        <button type="button" id="findzipbtn" class="col-2 form-control btn btn-primary">검색하기</button>
+                        <button type="button" name="findzipbtn" id="findzipbtn" class="col-2 form-control btn btn-primary">검색하기</button>
                     </div>
                     <div class="form-group row">
                         <hr class="col-9">

@@ -48,6 +48,8 @@ public class MemberServiceImpl implements MemberService{
         // ObjectMapper 라는 라이브러리를 이용하면, 손쉽게 JSON 형식의 데이터를 생성할 수 있음
         // writeValueAsString : List 형식의 데이터를 JSON 형식으로 변환해줌
 
+        // http://localhost:8080/join/zipcode?dong=xxx -> xxx에 검색한 동네 이름
+
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
 
@@ -66,7 +68,7 @@ public class MemberServiceImpl implements MemberService{
 
     @Override
     public String checkUserid(String uid) {
-        return null;
+        return mdao.selectOneUserid(uid)+"";    // 문자형으로 형변환
     }
 
     @Override
