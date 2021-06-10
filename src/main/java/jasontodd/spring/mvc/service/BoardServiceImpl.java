@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("bsrv")
 public class BoardServiceImpl implements BoardService{
@@ -15,7 +17,10 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public boolean newBoard(Board b) {
-        return false;
+        boolean isInserted = false;
+        if (bdao.insertBoard(b) > 0) isInserted = true;
+
+        return isInserted;
     }
 
     @Override
@@ -36,27 +41,41 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public List<Board> readBoard(String cp, String ftype, String fkdy) {
-        return null;
+    public List<Board> readBoard(String cp, String ftype, String fkey) {
+        int snum = (Integer.parseInt(cp) - 1) * 30;
+
+        Map<String, Object> params = new HashMap<>();       // vo 클래스 안넣고 map 사용해서 입력
+        params.put("snum", snum);
+        params.put("ftype", ftype);
+        params.put("fkey", fkey);
+
+        return bdao.findSelectBoard(params);
     }
 
     @Override
     public Board readOneBoard(String bdno) {
-        return null;
+        return bdao.selectOneBoard(bdno);
     }
 
     @Override
     public int countBoard() {
-        return 0;
+
+        return bdao.selectCountBoard();
     }
 
     @Override
-    public int countBoard(String ftype, String fkdy) {
-        return 0;
+    public int countBoard(String ftype, String fkey) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("ftype", ftype);
+        params.put("fkey", fkey);
+
+        return bdao.selectCountBoard();
     }
 
     @Override
     public boolean viewCountBoard(String bdno) {
-        return false;
+        boolean isUpdate = false;
+        if (bdao.viewCountBoard(bdno) > 0) isUpdate = true;
+        return isUpdate;
     }
 }

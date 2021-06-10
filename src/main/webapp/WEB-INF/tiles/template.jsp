@@ -16,7 +16,9 @@
 	
 	<!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-	
+
+	<!-- user define CSS -->
+    <link rel="stylesheet" href="/css/board.css">
 
     <title>SemiProjectV2</title>
   </head>
@@ -74,5 +76,6 @@
     <script src="https://kit.fontawesome.com/d248479533.js" crossorigin="anonymous"></script>
 
 	<script src="/js/join.js" ></script>
+	<script src="/js/board.js" ></script>
   </body>
 </html>
