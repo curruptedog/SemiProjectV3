@@ -1,4 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
     <title>자료실</title>
@@ -24,7 +26,7 @@
         </div>
     </div>
     <div class="col-5 text-right">
-        <button type="button" id="newbdbtn" class="btn btn-light"><i class="fas fa-plus"></i> 새글쓰기</button>
+        <button type="button" id="newpdsbtn" name="newpdsbtn" class="btn btn-light"><i class="fas fa-plus"></i> 새글쓰기</button>
     </div>
 </div> <!-- 검색과 버튼 -->
 
@@ -53,170 +55,18 @@
                         <th>521</th>
                     </tr>
 
+                    <c:forEach var="p" items="${pds}">
                     <tr>
-                        <td>1</td>
-                        <td><a href="view.html">
-                            Lorem ipsum</a>
+                        <td>${p.pno}</td>
+                        <td><a href="/pds/view?pno=${p.pno}">
+                            ${p.title}</a>
                         </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
+                        <td>${p.userid}</td>
+                        <td>${fn.substring(p.regdate, 0, 10)}</td>
+                        <td>${p.thumdup}</td>
+                        <td>${p.views}</td>
                     </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>5</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>6</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>7</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>8</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>9</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>10</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>11</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>12</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>13</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>14</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
-
-                    <tr>
-                        <td>15</td>
-                        <td>
-                            Lorem ipsum
-                        </td>
-                        <td>강아지</td>
-                        <td>2021.05.21</td>
-                        <td>7</td>
-                        <td>15</td>
-                    </tr>
+                    </c:forEach>
 
                 </tbody>
 

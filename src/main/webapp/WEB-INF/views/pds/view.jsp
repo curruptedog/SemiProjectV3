@@ -1,15 +1,20 @@
 <%@ page  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
- <style>
-     .tbbg1 {background: #dff0f8}
-     .tbbg2 {background: #ccff99}
-     .tbbg3 {background: #F9E79F}
-     .pushdwn {margin-top: 45px }
-     .cmtbg1 {background: #D3D3D3; padding: 7px 0 ;}
-     .cmtbg2 {background: #5F8575; padding: 7px 0 ;}
-     .pushright {float: right}
- </style>
- 
+<%-- 첨부파일 아이콘 선택 --%>
+<c:set var="atticon1" value="${p.ftype1}" />
+<c:if test="${p.ftype1 ne 'zip' and p.ftype1 ne 'png' and p.ftype1 ne 'txt' }" >
+    <c:set var="atticon1" value="file" />
+</c:if>
+<c:set var="atticon2" value="${p.ftype2}" />
+<c:if test="${p.ftype1 ne 'zip' and p.ftype1 ne 'png' and p.ftype2 ne 'txt' }" >
+    <c:set var="atticon2" value="file" />
+</c:if>
+<c:set var="atticon3" value="${p.ftype3}" />
+<c:if test="${p.ftype1 ne 'zip' and p.ftype1 ne 'png' and p.ftype3 ne 'txt' }" >
+    <c:set var="atticon3" value="file" />
+</c:if>
 
  <div id="main">
      <div class="col-12">
@@ -26,34 +31,42 @@
                  </div>
              </div>
              <div class="col-5 text-right">
-                 <button type="button" id="back2list" class="btn btn-light"><i class="fas fa-plus"></i> 새글쓰기</button>
+                 <button type="button" id="newpdsbtn" class="btn btn-light"><i class="fas fa-plus"></i> 새글쓰기</button>
              </div>
          </div> <!-- 버튼 -->
 
          <div class="row">
              <table class="table col-10 offset-1">
                  <tr class="tbbg1 text-center"><th colspan="2">
-                     <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2></th></tr>
-                 <tr class="tbbg2"><td style="width: 50%">작성자</td>
-                 <td class="text-right">2021.05.21 11:11:11 / 22 / 33 </td></tr>
-                 <tr class="tbbg3"><td colspan="2">
-                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                     "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+                     <h2>${p.title}</h2></th></tr>
+                 <tr class="tbbg2"><td style="width: 50%">${p.userid}</td>
+                 <td class="text-right">${p.regdate} / ${p.thumdup} / ${views}</td></tr>
+                 <tr class="tbbg3 bdcsize"><td colspan="2">
+                     ${p.contents}
                      </td></tr> <!-- 본문 내용 -->
-                 <tr><td colspan="2" class="tbbg4">첨부1 :
-                     <img src="/img/zip.png"> homework.zip (123kb, 10회 다운로드함)</td></tr>
-                 <tr><td colspan="2" class="tbbg4">첨부2 :
-                     <img src="/img/txt.png"> homework.txt (456kb, 10회 다운로드함)</td></tr>
-                 <tr><td colspan="2" class="tbbg4">첨부3 :
-                     <img src="/img/png.png"> homework.png (789kb, 10회 다운로드함)</td></tr>
+
+                 <tr><td colspan="2" class="tbbg4 patxt">첨부1 :
+                     <img src="/img/${atticon1}.png"> ${p.fname1} (${p.fsize1}KB, ${p.fdown1}회 다운로드함)</td></tr>
+
+                 <c:if test="${p.fname2 ne '-'} " >
+                 <tr><td colspan="2" class="tbbg4 patxt">첨부2 :
+                     <img src="/img/${atticon2}.png"> ${p.fname2} (${p.fsize2}KB, ${p.fdown2}회 다운로드함)</td></tr>
+                 </c:if>
+
+                 <c:if test="${p.fname3 ne '-'}" >
+                 <tr><td colspan="2" class="tbbg4 patxt">첨부3 :
+                     <img src="/img/${atticon3}.png"> ${p.fname3} (${p.fsize3}KB, ${p.fdown3}회 다운로드함)</td></tr>
+                 </c:if>
              </table>
          </div> <!-- 본문 테이블 -->
 
          <div class="row">
              <div class="col-5 offset-1">
                  <div class="form-group row">
-                     <button type="button" id="prepage" class="btn btn-warning text-white"><i class="fas fa-user-edit"></i> 수정하기</button>&nbsp;
-                     <button type="button" id="nxtpage" class="btn btn-danger"><i class="fas fa-trash-alt"></i> 삭제하기</button>
+                     <button type="button" id="prepage" class="btn btn-warning text-white">
+                         <i class="fas fa-user-edit"></i> 수정하기</button>&nbsp;
+                     <button type="button" id="nxtpage" class="btn btn-danger">
+                         <i class="fas fa-trash-alt"></i> 삭제하기</button>
                  </div>
              </div>
              <div class="col-5 text-right">

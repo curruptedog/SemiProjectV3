@@ -77,6 +77,7 @@
 
 	<script src="/js/join.js" ></script>
 	<script src="/js/board.js" ></script>
+	<script src="/js/pds.js" ></script>
 
     <script>
         // board findkey tag setting
