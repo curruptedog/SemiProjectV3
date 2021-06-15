@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("prsrv")
 public class PdsServiceImpl implements PdsService{
@@ -81,13 +83,48 @@ public class PdsServiceImpl implements PdsService{
         return pdao.selectOnePds(pno);
     }
 
-    @Override
+    @Override   // order는 순서를 나타냄
     public Pds readOneFname(String pno, String order) {
-        return null;
+        Map<String, String> param = new HashMap<>();
+        param.put("order", "fname"+order);      // order 가 1이면 fname1을 가져옴
+        param.put("pno", pno);
+        return pdao.selectOneFname(param);
     }
 
     @Override
     public boolean downCountPds(String pno, String order) {
-        return false;
+        boolean isUpdated = false;
+
+        Map<String, String> param = new HashMap<>();
+        param.put("order", "fdown"+order);
+        param.put("pno", pno);
+
+        if (pdao.downCountPds(param) > 0) isUpdated = true;
+
+        return isUpdated;
     }
+
+    @Override
+    public void modifyRecmd(String pno) {
+        pdao.updateRecmd(pno);
+    }
+
+    @Override
+    public String readPrevpno(String pno) {
+        return pdao.selectPrvpno(pno);
+    }
+
+    @Override
+    public String readNextpno(String pno) {
+        return pdao.selectNxtpno(pno);
+    }
+
+    @Override
+    public Pds removePds(String pno) {
+        Pds p = pdao.selectOnePds(pno);     // 삭제 하기 전 파일 정보를 알아냄
+        pdao.deletePds(pno);                // 해당 게시글 삭제
+
+        return p;
+    }
+
 }

@@ -11,5 +11,9 @@ public class IndexController {
         return "index.tiles";
     }
 
+    @GetMapping("/pds")
+    public String pds() {
+        return "pds.tiles";
+    }
 
 }
