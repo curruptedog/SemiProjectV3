@@ -1,17 +1,13 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="thumbURL" value="http://localhost/thumb/" />
 
 
 <title>게시판-새글쓰기</title>
 
-<style>
-    .moveright {margin-left: 135px}
-    .pushright {float: right}
-    .pushdown {margin-bottom: 10px}
-    .cardwidth {width: 250px;}
-    .imgsize {width: 220px; height: 220px; margin-left: 14px; cursor: pointer;}
-    img {background: url(/img/cookie.png) no-repeat center;}
-</style>
-  
 <div id="main">
     <div class="col-12">
     <h2 style="font-weight: bold;"><i class="fas fa-images"></i> 갤러리</h2>
@@ -21,180 +17,36 @@
 <div class="row">
 
     <div class="col-11 text-right">
-        <button type="button" id="newbdbtn" class="btn btn-light"><i class="fas fa-plus-circle"></i> 사진올리기</button>
+        <button type="button" id="newgalbtn" name="newgalbtn" class="btn btn-light">
+            <i class="fas fa-plus-circle"></i> 사진올리기</button>
     </div>
 </div> <!-- 검색과 버튼 -->
 
 <div class="row">
     <div class="col-12">
         <ul class="list-inline moveright">
+
+            <c:forEach var="g" items="${gals}" >
             <li class="list-inline-item  pushdown">
                 <div class="card cardwidth">
-                    <img class="imgsize card-img-top" onclick="showing('123');">
+                    <img class="imgsize card-img-top" onclick="showimg('${g.gno}');"
+                         src="${thumbURL}small_${g.gno}_${fn:split(g.fnames, "[/]")[0]}">
                     <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
+
+                        <h5 class="card-title">${g.title}</h5>
+                        <p class="card-text">${g.userid}
+                        <span class="pushright">${fn:substring(g.regdate, 0, 10)}</span></p>
                         <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
+                        <i class="far fa-eye"></i> ${g.views}
+                        <span class="pushright"><i class="fas fa-thumbs-up"></i> ${g.thumdup}</span></p>
+
+                    </div> <!-- carString uuid = imgutil.makeUUID();   // 식별코드 생성d body -->
                 </div> <!-- card -->
 
             </li>
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-            </li>
+            </c:forEach>
 
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-            <hr>
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top" >
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
 
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top" >
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-            <hr>
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-            <hr>
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
-
-            <li class="list-inline-item">
-                <div class="card cardwidth">
-                    <img class="imgsize card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">제목제목</h5>
-                        <p class="card-text">작성자
-                        <span class="pushright">2021.05.21</span></p>
-                        <p class="card-text">
-                        <i class="far fa-eye"></i> 15
-                        <span class="pushright"><i class="fas fa-thumbs-up"></i> 3</span></p>
-                    </div> <!-- card body -->
-                </div> <!-- card -->
-             </li>
             <hr>
         </ul>
     </div>
@@ -224,15 +76,8 @@
 
 </div> <!-- main -->
 
-<script>
-    $('#newbdbtn').click(function() {location.href='write.html';})
-</script>
-<script>
-    $('#joinbtn').click(function() {location.href='/join/agree.html';})
-</script>
 
-<script>
-    function showing(gno) {location.href='/gallery/view.html'}
-</script>
+
+
 
 

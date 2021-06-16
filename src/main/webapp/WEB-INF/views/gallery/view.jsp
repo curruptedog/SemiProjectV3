@@ -1,20 +1,10 @@
 <%@ page pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-    <title>게시판-새글쓰기</title>
-
-    <style>
-        .tbbg1 {background: #dff0f8}
-        .tbbg2 {background: #ccff99}
-        .tbbg3 {background: #F9E79F}
-        .pushdwn {margin-top: 45px }
-        .cmtbg1 {background: #D3D3D3; padding: 7px 0 ;}
-        .cmtbg2 {background: #5F8575; padding: 7px 0 ;}
-        .pushright {float: right}
-
-    </style>
-  
-
+<c:set var="fnames" value="${fn:split(g.fnames, '/')}" />
+<c:set var="fsizes" value="${fn:split(g.fsizes, '/')}" />
+<c:set var="baseURL" value="http://localhost/cdn/" />
 
 <div id="main">
     <div class="col-12">
@@ -31,29 +21,38 @@
              </div>
          </div>
          <div class="col-5 text-right">
-             <button type="button" id="back2list" class="btn btn-light"><i class="fas fa-plus"></i> 새글쓰기</button>
+             <button type="button" id="newgalbtn" class="btn btn-light"><i class="fas fa-plus"></i> 새글쓰기</button>
          </div>
      </div> <!-- 버튼 -->
 
      <div class="row">
          <table class="table col-10 offset-1">
              <tr class="tbbg1 text-center"><th colspan="2">
-                 <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2></th></tr>
-             <tr class="tbbg2"><td style="width: 50%">작성자</td>
-             <td class="text-right">2021.05.21 11:11:11 / 22 / 33 </td></tr>
+                 <h2>${g.title}</h2></th></tr>
+             <tr class="tbbg2"><td style="width: 50%">${g.userid}</td>
+             <td class="text-right">${g.regdate} / ${g.thumdup} / ${g.views} </td></tr>
              <tr class="tbbg3"><td colspan="2">
-                 <div><img src="/img/good.jpg" class="img-fluid"></div>
-                 <div><img src="/img/maybeblack.gif" class="img-fluid"></div>
-                 <div><img src="/img/1b86f811d2ecbd0d6fcf58f7f6ca110b.jpg" class="img-fluid"></div>
+
+                     <c:forEach var="f" items="${fnames}">
+                         <%-- abc.png --%>
+                     <c:set var="pos" value="${fn:indexOf(f,'.')}" />
+                     <c:set var="fname" value="${fn:substring(f, 0, pos)}" />
+                     <c:set var="fext" value="${fn:substring(f, pos+1, fn:length(f))}" />
+                         <div>
+                         <img src="${baseURL}${fname}${g.uuid}.${fext}" class="img-fluid" >
+                         </div>
+                     </c:forEach>
                  </td></tr>
+
+             <%-- 첨부파일 표시 --%>
+             <c:forEach begin="0" end="${fn:length(fnames) - 1}" var="i">
              <tr><td colspan="2" class="tbbg4">첨부1 :
-                 <img src="/img/png.png"> homework.zip (123kb, 10회 다운로드함)</td></tr>
-             <tr><td colspan="2" class="tbbg4">첨부2 :
-                 <img src="/img/png.png"> homework.txt (456kb, 10회 다운로드함)</td></tr>
-             <tr><td colspan="2" class="tbbg4">첨부3 :
-                 <img src="/img/png.png"> homework.png (789kb, 10회 다운로드함)</td></tr>
+                 <i class="fas fa-file-image"></i>${fnames[i]} (${fsizes[i]}kb)</td></tr>
+
+             </c:forEach>
          </table>
      </div> <!-- 본문 테이블 -->
+
 
      <div class="row">
          <div class="col-5 offset-1">
@@ -63,7 +62,7 @@
              </div>
          </div>
          <div class="col-5 text-right">
-             <button type="button" id="back2list" class="btn btn-light"><i class="bi bi-card-list"></i> 목록으로</button>
+             <button type="button" id="back2gal" class="btn btn-light"><i class="bi bi-card-list"></i> 목록으로</button>
          </div>
      </div> <!-- 수정,삭제 버튼 -->
 
