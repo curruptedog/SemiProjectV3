@@ -32,39 +32,46 @@
              <tr class="tbbg2"><td style="width: 50%">${g.userid}</td>
              <td class="text-right">${g.regdate} / ${g.thumdup} / ${g.views} </td></tr>
              <tr class="tbbg3"><td colspan="2">
+                    <div>${g.contents}</div>
 
                      <c:forEach var="f" items="${fnames}">
+                         <c:if test="${f ne '-'}">
                          <%-- abc.png --%>
-                     <c:set var="pos" value="${fn:indexOf(f,'.')}" />
-                     <c:set var="fname" value="${fn:substring(f, 0, pos)}" />
-                     <c:set var="fext" value="${fn:substring(f, pos+1, fn:length(f))}" />
-                         <div>
-                         <img src="${baseURL}${fname}${g.uuid}.${fext}" class="img-fluid" >
-                         </div>
+                         <c:set var="pos" value="${fn:indexOf(f,'.')}" />
+                         <c:set var="fname" value="${fn:substring(f, 0, pos)}" />
+                         <c:set var="fext" value="${fn:substring(f, pos+1, fn:length(f))}" />
+                             <div>
+                             <img src="${baseURL}${fname}${g.uuid}.${fext}" class="img-fluid" >
+                             </div>
+                         </c:if>
                      </c:forEach>
                  </td></tr>
 
              <%-- 첨부파일 표시 --%>
              <c:forEach begin="0" end="${fn:length(fnames) - 1}" var="i">
-             <tr><td colspan="2" class="tbbg4">첨부1 :
-                 <i class="fas fa-file-image"></i>${fnames[i]} (${fsizes[i]}kb)</td></tr>
-
+                 <c:if test="${fnames[i] ne '-'}" >
+                    <tr><td colspan="2" class="tbbg4">첨부1 :
+                    <i class="fas fa-file-image"></i>${fnames[i]} (${fsizes[i]}kb)</td></tr>
+                 </c:if>
              </c:forEach>
          </table>
+
      </div> <!-- 본문 테이블 -->
 
 
      <div class="row">
          <div class="col-5 offset-1">
              <div class="form-group row">
-                 <button type="button" id="prepage" class="btn btn-warning text-white"><i class="fas fa-user-edit"></i> 수정하기</button>&nbsp;
-                 <button type="button" id="nxtpage" class="btn btn-danger"><i class="fas fa-trash-alt"></i> 삭제하기</button>
+                 <button type="button" id="modgbtn" class="btn btn-warning text-white"><i class="fas fa-user-edit"></i> 수정하기</button>&nbsp;
+                 <button type="button" id="rmvgbtn" class="btn btn-danger"><i class="fas fa-trash-alt"></i> 삭제하기</button>
              </div>
          </div>
          <div class="col-5 text-right">
              <button type="button" id="back2gal" class="btn btn-light"><i class="bi bi-card-list"></i> 목록으로</button>
          </div>
      </div> <!-- 수정,삭제 버튼 -->
+
+     <input type="hidden" id="gno" value="${param.gno}" />
 
  </div> <!-- 본문 -->
 

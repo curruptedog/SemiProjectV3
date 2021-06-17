@@ -66,10 +66,12 @@ public class ImgUploadUtil {
             // 원본이미지를 읽어서 메모리상에 이미지 객체(갠버스)로 만들어 둠
             BufferedImage image = ImageIO.read(new File(ofname));
 
+            // 가로세로 중 제일 작은 값으로 잘라냄
             int imgwidth = Math.min(image.getHeight(), image.getWidth());
             int imgheight = imgwidth;
 
-            // 지정한 위치를 기준으로 잘라냄
+            // 지정한 위치를 기준으로 잘라냄.
+            // 기본 사진에서 잘라낼 사이즈를 빼고 그걸 반으로 나눈 위치부터 잘라냄
             BufferedImage scaledImg = Scalr.crop( image,
                     (image.getWidth() - imgwidth) / 2,
                     (image.getHeight() - imgheight) / 2,

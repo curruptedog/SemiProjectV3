@@ -81,6 +81,9 @@
 	<script src="/js/pds.js" ></script>
 	<script src="/js/gallery.js" ></script>
 
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
     <script>
         // board findkey tag setting
          $('#findtype').val('${param.findtype}')

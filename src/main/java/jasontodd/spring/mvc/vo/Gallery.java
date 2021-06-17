@@ -11,6 +11,7 @@ public class Gallery {
     protected String fnames;
     protected String fsizes;
     protected String uuid;
+    protected String todie;
 
     public String getGno() {
         return gno;
@@ -90,5 +91,13 @@ public class Gallery {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public String getTodie() {
+        return todie;
+    }
+
+    public void setTodie(String todie) {
+        this.todie = todie;
     }
 }
