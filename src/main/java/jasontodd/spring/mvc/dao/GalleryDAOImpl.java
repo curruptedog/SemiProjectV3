@@ -36,7 +36,7 @@ public class GalleryDAOImpl implements GalleryDAO{
 
     @Override
     public String readFnames(String gno) {
-        return sqlSession.selectOne("gallery.readFname", gno);
+        return sqlSession.selectOne("gallery.readFnames", gno);
     }
 
     @Override

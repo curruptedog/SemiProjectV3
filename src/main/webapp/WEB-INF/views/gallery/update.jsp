@@ -41,7 +41,7 @@
                     <div class="form-group row">
                         <label class="col-2 col-form-label text-danger text-right" for="contents">본문 내용</label>
                         <textarea class="col-9 col-form-label border-danger form-control" name="contents" id="contents"
-                                  rows="22" value="${g.contents}"></textarea>
+                                  rows="22">${g.contents}</textarea>
                     </div>
 
                     <!-- 첨부파일들 -->

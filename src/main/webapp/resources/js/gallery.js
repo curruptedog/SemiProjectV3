@@ -49,7 +49,7 @@ $('#file3').on('change', function () {
 
 // modify gallery
 $('#modgbtn').on('click', function () {
-    location.href = '/gallery/update?gno' + $('#gno').val();
+    location.href = '/gallery/update?gno=' + $('#gno').val();
 });
 
 // remove gallery
@@ -92,7 +92,7 @@ $('#die3').on('change', function () {
 $('#modgal').on('click', function () {
     if (grecaptcha.getResponse() == '') alert('캡챠 확인해주세요.');
     else {
-        const frm = $('#modalfrm');
+        const frm = $('#modgalfrm');
         frm.attr('method', 'post');
         frm.attr('enctype', 'multipart/form-data');
         frm.attr('action', '/gallery/update');
